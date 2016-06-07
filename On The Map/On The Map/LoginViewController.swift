@@ -20,6 +20,9 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func signUp(sender: AnyObject) {
+        let signUpUrl = NSURL(string: "https://www.udacity.com/account/auth#!/signup")
+        UIApplication.sharedApplication().openURL(signUpUrl!)
+    }
 }
 
