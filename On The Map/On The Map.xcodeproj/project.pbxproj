@@ -7,13 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34258B2D1D17E32E00312737 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34258B2C1D17E32E00312737 /* UdacityClient.swift */; };
+		34258B2F1D17E36800312737 /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34258B2E1D17E36800312737 /* UdacityConstants.swift */; };
+		34258B311D17EE3C00312737 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34258B301D17EE3C00312737 /* ParseClient.swift */; };
+		34258B331D17EE4800312737 /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34258B321D17EE4800312737 /* ParseConstants.swift */; };
 		343372841CC7796D00241DBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343372831CC7796D00241DBE /* AppDelegate.swift */; };
 		343372861CC7796D00241DBE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343372851CC7796D00241DBE /* LoginViewController.swift */; };
 		343372891CC7796D00241DBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 343372871CC7796D00241DBE /* Main.storyboard */; };
 		343372991CC7796D00241DBE /* On_The_MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343372981CC7796D00241DBE /* On_The_MapTests.swift */; };
 		343372A41CC7796D00241DBE /* On_The_MapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343372A31CC7796D00241DBE /* On_The_MapUITests.swift */; };
+		34B64E521D3ECB5D00226CA1 /* NewLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B64E511D3ECB5D00226CA1 /* NewLocationViewController.swift */; };
 		34C63D001CCEAB3D00388E33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34C63CFF1CCEAB3D00388E33 /* Assets.xcassets */; };
 		34C63D041CCEACC100388E33 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34C63D031CCEACC100388E33 /* Launch Screen.storyboard */; };
+		34E568C11D3D305100D969B7 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E568C01D3D305100D969B7 /* TableViewController.swift */; };
+		34E568C31D3D32D600D969B7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E568C21D3D32D600D969B7 /* MapViewController.swift */; };
+		34E568C51D3E224300D969B7 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E568C41D3E224300D969B7 /* Utility.swift */; };
+		34E568C71D3E249800D969B7 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E568C61D3E249800D969B7 /* StudentInformation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		34258B2C1D17E32E00312737 /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
+		34258B2E1D17E36800312737 /* UdacityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
+		34258B301D17EE3C00312737 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
+		34258B321D17EE4800312737 /* ParseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
 		343372801CC7796D00241DBE /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		343372831CC7796D00241DBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		343372851CC7796D00241DBE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -45,8 +58,13 @@
 		3433729F1CC7796D00241DBE /* On The MapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "On The MapUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		343372A31CC7796D00241DBE /* On_The_MapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_The_MapUITests.swift; sourceTree = "<group>"; };
 		343372A51CC7796D00241DBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34B64E511D3ECB5D00226CA1 /* NewLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewLocationViewController.swift; sourceTree = "<group>"; };
 		34C63CFF1CCEAB3D00388E33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34C63D031CCEACC100388E33 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		34E568C01D3D305100D969B7 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		34E568C21D3D32D600D969B7 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		34E568C41D3E224300D969B7 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		34E568C61D3E249800D969B7 /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +147,15 @@
 			isa = PBXGroup;
 			children = (
 				343372851CC7796D00241DBE /* LoginViewController.swift */,
+				34B64E511D3ECB5D00226CA1 /* NewLocationViewController.swift */,
+				34258B2C1D17E32E00312737 /* UdacityClient.swift */,
+				34E568C41D3E224300D969B7 /* Utility.swift */,
+				34258B2E1D17E36800312737 /* UdacityConstants.swift */,
+				34258B301D17EE3C00312737 /* ParseClient.swift */,
+				34258B321D17EE4800312737 /* ParseConstants.swift */,
+				34E568C01D3D305100D969B7 /* TableViewController.swift */,
+				34E568C21D3D32D600D969B7 /* MapViewController.swift */,
+				34E568C61D3E249800D969B7 /* StudentInformation.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -157,9 +184,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 343372AB1CC7796D00241DBE /* Build configuration list for PBXNativeTarget "On The MapTests" */;
 			buildPhases = (
+				0C83CEEB9992EBD8A9E5949B /* 📦 Check Pods Manifest.lock */,
 				343372901CC7796D00241DBE /* Sources */,
 				343372911CC7796D00241DBE /* Frameworks */,
 				343372921CC7796D00241DBE /* Resources */,
+				0D2761F9C769C168411D15BC /* 📦 Embed Pods Frameworks */,
+				AAD326665F6C2546AF9F4475 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -175,9 +205,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 343372AE1CC7796D00241DBE /* Build configuration list for PBXNativeTarget "On The MapUITests" */;
 			buildPhases = (
+				A57AE220ACAAA707D62B4F5B /* 📦 Check Pods Manifest.lock */,
 				3433729B1CC7796D00241DBE /* Sources */,
 				3433729C1CC7796D00241DBE /* Frameworks */,
 				3433729D1CC7796D00241DBE /* Resources */,
+				9F9EAD0EA9D3BD780B857354 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -259,13 +291,100 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0C83CEEB9992EBD8A9E5949B /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		0D2761F9C769C168411D15BC /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-On The MapTests/Pods-On The MapTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F9EAD0EA9D3BD780B857354 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-On The MapUITests/Pods-On The MapUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A57AE220ACAAA707D62B4F5B /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AAD326665F6C2546AF9F4475 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-On The MapTests/Pods-On The MapTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3433727C1CC7796D00241DBE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				343372861CC7796D00241DBE /* LoginViewController.swift in Sources */,
+				34E568C11D3D305100D969B7 /* TableViewController.swift in Sources */,
+				34E568C51D3E224300D969B7 /* Utility.swift in Sources */,
+				34258B311D17EE3C00312737 /* ParseClient.swift in Sources */,
+				34B64E521D3ECB5D00226CA1 /* NewLocationViewController.swift in Sources */,
+				34258B2F1D17E36800312737 /* UdacityConstants.swift in Sources */,
 				343372841CC7796D00241DBE /* AppDelegate.swift in Sources */,
+				34258B2D1D17E32E00312737 /* UdacityClient.swift in Sources */,
+				34258B331D17EE4800312737 /* ParseConstants.swift in Sources */,
+				34E568C71D3E249800D969B7 /* StudentInformation.swift in Sources */,
+				34E568C31D3D32D600D969B7 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
