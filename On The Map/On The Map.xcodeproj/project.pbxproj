@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34164F1B1D44001000E1F956 /* HelperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34164F1A1D44001000E1F956 /* HelperViewController.swift */; };
 		34258B2D1D17E32E00312737 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34258B2C1D17E32E00312737 /* UdacityClient.swift */; };
 		34258B2F1D17E36800312737 /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34258B2E1D17E36800312737 /* UdacityConstants.swift */; };
 		34258B311D17EE3C00312737 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34258B301D17EE3C00312737 /* ParseClient.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		34164F1A1D44001000E1F956 /* HelperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperViewController.swift; sourceTree = "<group>"; };
 		34258B2C1D17E32E00312737 /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		34258B2E1D17E36800312737 /* UdacityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
 		34258B301D17EE3C00312737 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				34B64E511D3ECB5D00226CA1 /* NewLocationViewController.swift */,
 				34E568C01D3D305100D969B7 /* TableViewController.swift */,
 				34E568C21D3D32D600D969B7 /* MapViewController.swift */,
+				34164F1A1D44001000E1F956 /* HelperViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				34B64E521D3ECB5D00226CA1 /* NewLocationViewController.swift in Sources */,
 				34258B2F1D17E36800312737 /* UdacityConstants.swift in Sources */,
 				343372841CC7796D00241DBE /* AppDelegate.swift in Sources */,
+				34164F1B1D44001000E1F956 /* HelperViewController.swift in Sources */,
 				34258B2D1D17E32E00312737 /* UdacityClient.swift in Sources */,
 				34258B331D17EE4800312737 /* ParseConstants.swift in Sources */,
 				34E568C71D3E249800D969B7 /* StudentInformation.swift in Sources */,

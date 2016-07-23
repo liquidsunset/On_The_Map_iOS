@@ -24,7 +24,7 @@ class NewLocationViewController: UIViewController, MKMapViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Add New Location"
+        title = "Add New Location"
         let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.cancel))
         navigationItem.rightBarButtonItem = cancelButton
         submitButton.hidden = true
@@ -43,20 +43,20 @@ class NewLocationViewController: UIViewController, MKMapViewDelegate {
         geocoder.geocodeAddressString(addressField.text!) {
             (clPlacemarks, error) in
             guard (error == nil) else {
-                dispatch_async(dispatch_get_main_queue(), {
+                self.performUpdatesOnMain() {
                     self.showAlertMessage("GeoCoding-Error", message: (error?.localizedDescription)!)
-                })
+                }
                 return
             }
 
             guard (clPlacemarks?.count > 0) else {
-                dispatch_async(dispatch_get_main_queue(), {
+                self.performUpdatesOnMain() {
                     self.showAlertMessage("GeoCoding-Error", message: "No results found")
-                })
+                }
                 return
             }
 
-            dispatch_async(dispatch_get_main_queue(), {
+            self.performUpdatesOnMain() {
                 self.activityIndicator.stopAnimating()
                 self.submitButton.hidden = false
                 self.userPlacemark = MKPlacemark(placemark: clPlacemarks![0])
@@ -65,7 +65,7 @@ class NewLocationViewController: UIViewController, MKMapViewDelegate {
                 let zoomToUser = MKCoordinateRegionMake((self.userPlacemark!.location?.coordinate)!, span)
                 self.view.endEditing(true)
                 self.mapView.setRegion(zoomToUser, animated: true)
-            })
+            }
 
         }
 
@@ -81,22 +81,22 @@ class NewLocationViewController: UIViewController, MKMapViewDelegate {
         ParseClient.sharedInstance.addNewLocation(userPlacemark, mapString: addressField.text!, mediaUrl: linkField.text!) {
             (success, error) in
             guard (error == nil) else {
-                dispatch_async(dispatch_get_main_queue(), {
+                self.performUpdatesOnMain() {
                     self.showAlertMessage("Location-Error", message: error!)
-                })
+                }
                 return
             }
 
             guard (success == true) else {
-                dispatch_async(dispatch_get_main_queue(), {
+                self.performUpdatesOnMain() {
                     self.showAlertMessage("Location-Error", message: "Failed to post location")
-                })
+                }
                 return
             }
 
-            dispatch_async(dispatch_get_main_queue(), {
+            self.performUpdatesOnMain() {
                 self.dismissViewControllerAnimated(true, completion: nil)
-            })
+            }
         }
     }
 
@@ -106,17 +106,5 @@ class NewLocationViewController: UIViewController, MKMapViewDelegate {
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
-    }
-
-    func showAlertMessage(title: String, message: String) {
-        activityIndicator.stopAnimating()
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "OK", style: .Default, handler: {
-            (action) -> Void in
-            alertController.dismissViewControllerAnimated(true, completion: nil)
-        })
-        alertController.addAction(ok)
-
-        presentViewController(alertController, animated: true, completion: nil)
     }
 }

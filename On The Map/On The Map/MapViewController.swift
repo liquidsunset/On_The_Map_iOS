@@ -42,7 +42,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.sharedApplication()
             if let toOpen = view.annotation?.subtitle {
-                app.openURL(NSURL(string: toOpen!)!)
+                let studentURL = NSURL(string: toOpen!)
+                guard (studentURL != nil) else {
+                    self.performUpdatesOnMain() {
+                        self.showAlertMessage("URL-Error", message: "No valid URL")
+                    }
+                    return
+                }
+                app.openURL(studentURL!)
             }
         }
     }
@@ -80,7 +87,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     private func refresh() {
         ParseClient.sharedInstance.getStudentLocations() {
             (success, error) in
-            dispatch_async(dispatch_get_main_queue(), {
+            self.performUpdatesOnMain() {
                 guard (error == nil) else {
                     self.showAlertMessage("Location-Data Error", message: error!)
                     return
@@ -88,12 +95,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
                 self.removeAnnotations()
                 self.displayStudentPins()
-            })
+            }
         }
     }
 
     @IBAction func logoutPressed(sender: AnyObject) {
-        UdacityClient.sharedInstance.logout()
+        UdacityClient.sharedInstance.logout() {
+            (success, error) in
+
+            guard (error == nil) else {
+                self.showAlertMessage("Logout-Error", message: error!)
+                return
+            }
+        }
         dismissViewControllerAnimated(true, completion: nil)
     }
 
@@ -105,16 +119,5 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let controller = storyboard?.instantiateViewControllerWithIdentifier("NewLocationController")
         let navigation = UINavigationController(rootViewController: controller!)
         navigationController?.presentViewController(navigation, animated: true, completion: nil)
-    }
-
-    func showAlertMessage(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "OK", style: .Default, handler: {
-            (action) -> Void in
-            alertController.dismissViewControllerAnimated(true, completion: nil)
-        })
-        alertController.addAction(ok)
-
-        presentViewController(alertController, animated: true, completion: nil)
     }
 }

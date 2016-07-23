@@ -20,11 +20,6 @@ class LoginViewController: UIViewController {
         passwordField.text = ""
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     @IBAction func signUp(sender: AnyObject) {
         let signUpUrl = NSURL(string: "https://www.udacity.com/account/auth#!/signup")
         UIApplication.sharedApplication().openURL(signUpUrl!)
@@ -44,15 +39,15 @@ class LoginViewController: UIViewController {
         UdacityClient.sharedInstance.login(emailField.text!, password: passwordField.text!) {
             (success, error) in
             guard success else {
-                dispatch_async(dispatch_get_main_queue(), {
+                self.performUpdatesOnMain() {
                     self.showAlertMessage("Login Failed", message: error!)
-                })
+                }
                 return
             }
-            dispatch_async(dispatch_get_main_queue(), {
+            self.performUpdatesOnMain() {
                 let tabBarController = self.storyboard?.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
                 self.presentViewController(tabBarController, animated: true, completion: nil)
-            })
+            }
         }
 
     }
@@ -61,16 +56,6 @@ class LoginViewController: UIViewController {
         view.endEditing(true)
     }
 
-    func showAlertMessage(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "OK", style: .Default, handler: {
-            (action) -> Void in
-            self.dismissViewControllerAnimated(true, completion: nil)
-        })
-        alertController.addAction(ok)
-
-        presentViewController(alertController, animated: true, completion: nil)
-    }
 
 }
 

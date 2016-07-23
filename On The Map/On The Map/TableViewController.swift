@@ -34,13 +34,16 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell!.selectionStyle = .None
+
         let selectedStudentInfo = StudentInformation.studentInformationArray[indexPath.row]
         let studentURL = NSURL(string: selectedStudentInfo.mediaURL)
 
         guard (studentURL != nil) else {
-            dispatch_async(dispatch_get_main_queue(), {
+            self.performUpdatesOnMain() {
                 self.showAlertMessage("URL-Error", message: "No valid URL")
-            })
+            }
             return
         }
 
@@ -50,18 +53,25 @@ class TableViewController: UITableViewController {
     private func refresh() {
         ParseClient.sharedInstance.getStudentLocations() {
             (success, error) in
-            dispatch_async(dispatch_get_main_queue(), {
+            self.performUpdatesOnMain() {
                 guard (error == nil) else {
                     self.showAlertMessage("Location-Data Error", message: error!)
                     return
                 }
                 self.tableView.reloadData()
-            })
+            }
         }
     }
 
     @IBAction func logoutPressed(sender: AnyObject) {
-        UdacityClient.sharedInstance.logout()
+        UdacityClient.sharedInstance.logout() {
+            (success, error) in
+
+            guard (error == nil) else {
+                self.showAlertMessage("Logout-Error", message: error!)
+                return
+            }
+        }
         dismissViewControllerAnimated(true, completion: nil)
     }
 
@@ -73,16 +83,5 @@ class TableViewController: UITableViewController {
         let controller = storyboard?.instantiateViewControllerWithIdentifier("NewLocationController")
         let navigation = UINavigationController(rootViewController: controller!)
         navigationController?.presentViewController(navigation, animated: true, completion: nil)
-    }
-
-    func showAlertMessage(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "OK", style: .Default, handler: {
-            (action) -> Void in
-            alertController.dismissViewControllerAnimated(true, completion: nil)
-        })
-        alertController.addAction(ok)
-
-        presentViewController(alertController, animated: true, completion: nil)
     }
 }

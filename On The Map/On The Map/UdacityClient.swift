@@ -148,7 +148,7 @@ class UdacityClient {
         task.resume()
     }
 
-    func logout() {
+    func logout(completionHandler: (success:Bool, errorMessage:String?) -> Void) {
         let url = NSURL(string: Constants.BaseURLSecure + Methods.Session)
         let request = NSMutableURLRequest(URL: url!)
 
@@ -167,14 +167,25 @@ class UdacityClient {
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) {
             data, response, error in
-            if error != nil {
-                print(error)
+            
+            guard (error == nil) else {
+                completionHandler(success: false, errorMessage: error?.localizedDescription)
                 return
             }
-            let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5))
+            
+            guard let data = data else {
+                completionHandler(success: false, errorMessage: "Problem at requesting data!")
+                return
+            }
+            
+            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
             print(NSString(data: newData, encoding: NSUTF8StringEncoding))
             self.sessionID = nil
             self.userID = nil
+            self.firstName = nil
+            self.lastName = nil
+            
+            completionHandler(success: true, errorMessage: nil)
         }
 
         task.resume()
