@@ -11,14 +11,9 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        refresh()
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,7 +46,7 @@ class TableViewController: UITableViewController {
 
         UIApplication.sharedApplication().openURL(studentURL!)
     }
-    
+
     private func refresh() {
         ParseClient.sharedInstance.getStudentLocations() {
             (success, error) in
@@ -69,17 +64,17 @@ class TableViewController: UITableViewController {
         UdacityClient.sharedInstance.logout()
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
     @IBAction func refreshPressed(sender: AnyObject) {
         refresh()
     }
-    
+
     @IBAction func addNewLocation(sender: AnyObject) {
         let controller = storyboard?.instantiateViewControllerWithIdentifier("NewLocationController")
         let navigation = UINavigationController(rootViewController: controller!)
         navigationController?.presentViewController(navigation, animated: true, completion: nil)
     }
-    
+
     func showAlertMessage(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         let ok = UIAlertAction(title: "OK", style: .Default, handler: {
@@ -87,7 +82,7 @@ class TableViewController: UITableViewController {
             alertController.dismissViewControllerAnimated(true, completion: nil)
         })
         alertController.addAction(ok)
-        
+
         presentViewController(alertController, animated: true, completion: nil)
     }
 }

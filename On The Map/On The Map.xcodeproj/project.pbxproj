@@ -117,6 +117,7 @@
 			children = (
 				34C63D031CCEACC100388E33 /* Launch Screen.storyboard */,
 				34C63CFF1CCEAB3D00388E33 /* Assets.xcassets */,
+				34FF97551D43733B000B2BE1 /* Model */,
 				3439E5B21CCEA59100689CB5 /* Controller */,
 				343372831CC7796D00241DBE /* AppDelegate.swift */,
 				343372871CC7796D00241DBE /* Main.storyboard */,
@@ -148,16 +149,47 @@
 			children = (
 				343372851CC7796D00241DBE /* LoginViewController.swift */,
 				34B64E511D3ECB5D00226CA1 /* NewLocationViewController.swift */,
-				34258B2C1D17E32E00312737 /* UdacityClient.swift */,
-				34E568C41D3E224300D969B7 /* Utility.swift */,
-				34258B2E1D17E36800312737 /* UdacityConstants.swift */,
-				34258B301D17EE3C00312737 /* ParseClient.swift */,
-				34258B321D17EE4800312737 /* ParseConstants.swift */,
 				34E568C01D3D305100D969B7 /* TableViewController.swift */,
 				34E568C21D3D32D600D969B7 /* MapViewController.swift */,
-				34E568C61D3E249800D969B7 /* StudentInformation.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		34FF97551D43733B000B2BE1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				34FF97561D437348000B2BE1 /* Clients */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		34FF97561D437348000B2BE1 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				34E568C41D3E224300D969B7 /* Utility.swift */,
+				34E568C61D3E249800D969B7 /* StudentInformation.swift */,
+				34FF97581D43735E000B2BE1 /* Parse */,
+				34FF97571D437351000B2BE1 /* Udacity */,
+			);
+			name = Clients;
+			sourceTree = "<group>";
+		};
+		34FF97571D437351000B2BE1 /* Udacity */ = {
+			isa = PBXGroup;
+			children = (
+				34258B2E1D17E36800312737 /* UdacityConstants.swift */,
+				34258B2C1D17E32E00312737 /* UdacityClient.swift */,
+			);
+			name = Udacity;
+			sourceTree = "<group>";
+		};
+		34FF97581D43735E000B2BE1 /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				34258B301D17EE3C00312737 /* ParseClient.swift */,
+				34258B321D17EE4800312737 /* ParseConstants.swift */,
+			);
+			name = Parse;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

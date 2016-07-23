@@ -18,19 +18,26 @@ class NewLocationViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var linkField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+
     var userPlacemark: MKPlacemark!
-    
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Add New Location"
-        let cancelButton =  UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.cancel))
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.cancel))
         navigationItem.rightBarButtonItem = cancelButton
+        submitButton.hidden = true
+        activityIndicator.stopAnimating()
     }
-    
+
     @IBAction func searchLocation(sender: AnyObject) {
-        
+
+        guard (addressField.text != nil && !(addressField.text?.isEmpty)!) else {
+            showAlertMessage("Address-Error", message: "Address field must not be empty")
+            return
+        }
+
         let geocoder = CLGeocoder()
         activityIndicator.startAnimating()
         geocoder.geocodeAddressString(addressField.text!) {
@@ -41,16 +48,17 @@ class NewLocationViewController: UIViewController, MKMapViewDelegate {
                 })
                 return
             }
-            
+
             guard (clPlacemarks?.count > 0) else {
                 dispatch_async(dispatch_get_main_queue(), {
                     self.showAlertMessage("GeoCoding-Error", message: "No results found")
                 })
                 return
             }
-            
+
             dispatch_async(dispatch_get_main_queue(), {
                 self.activityIndicator.stopAnimating()
+                self.submitButton.hidden = false
                 self.userPlacemark = MKPlacemark(placemark: clPlacemarks![0])
                 self.mapView.addAnnotation(self.userPlacemark)
                 let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
@@ -58,35 +66,57 @@ class NewLocationViewController: UIViewController, MKMapViewDelegate {
                 self.view.endEditing(true)
                 self.mapView.setRegion(zoomToUser, animated: true)
             })
-        
+
         }
-        
+
     }
-    
-    
+
+
     @IBAction func submitLocation(sender: AnyObject) {
-        
-        
+        guard (linkField.text != nil && !(linkField.text?.isEmpty)!) else {
+            showAlertMessage("Link-Error", message: "Link field must not be empty")
+            return
+        }
+
+        ParseClient.sharedInstance.addNewLocation(userPlacemark, mapString: addressField.text!, mediaUrl: linkField.text!) {
+            (success, error) in
+            guard (error == nil) else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.showAlertMessage("Location-Error", message: error!)
+                })
+                return
+            }
+
+            guard (success == true) else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.showAlertMessage("Location-Error", message: "Failed to post location")
+                })
+                return
+            }
+
+            dispatch_async(dispatch_get_main_queue(), {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            })
+        }
     }
-    
+
     func cancel() {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
     }
-    
-    
-    
+
     func showAlertMessage(title: String, message: String) {
+        activityIndicator.stopAnimating()
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         let ok = UIAlertAction(title: "OK", style: .Default, handler: {
             (action) -> Void in
             alertController.dismissViewControllerAnimated(true, completion: nil)
         })
         alertController.addAction(ok)
-        
+
         presentViewController(alertController, animated: true, completion: nil)
     }
 }

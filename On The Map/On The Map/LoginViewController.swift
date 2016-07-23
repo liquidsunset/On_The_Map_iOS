@@ -14,9 +14,10 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var passwordField: UITextField!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        emailField.text = ""
+        passwordField.text = ""
     }
 
     override func didReceiveMemoryWarning() {

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 class ParseClient {
 
@@ -64,13 +65,17 @@ class ParseClient {
         task.resume()
     }
 
-    func addNewLocation(mapString: String, mediaUrl: String, completionHandler: (success:Bool, errorMessage:String?) -> Void) {
+    func addNewLocation(placeMark: MKPlacemark, mapString: String, mediaUrl: String, completionHandler: (success:Bool, errorMessage:String?) -> Void) {
         let url = NSURL(string: Constants.BaseURLSecure + Methods.StudentLocation)
         let request = NSMutableURLRequest(URL: url!)
+
+        request.HTTPMethod = "POST"
         request.addValue(Constants.ParseApplicationID, forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue(Constants.ParseRESTAPIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.HTTPBody = "{\"uniqueKey\": \"\(UdacityClient.sharedInstance.userID)\", \"firstName\": \"\(UdacityClient.sharedInstance.firstName)\", \"lastName\": \"\(UdacityClient.sharedInstance.lastName)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(mediaUrl)\",\"latitude\": 37.386052, \"longitude\": -122.083851}".dataUsingEncoding(NSUTF8StringEncoding)
+        print(UdacityClient.sharedInstance.userID)
+        print(placeMark.coordinate.longitude)
+        request.HTTPBody = "{\"uniqueKey\": \"\(UdacityClient.sharedInstance.userID)\", \"firstName\": \"\(UdacityClient.sharedInstance.firstName)\", \"lastName\": \"\(UdacityClient.sharedInstance.lastName)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(mediaUrl)\",\"latitude\": \(placeMark.coordinate.latitude), \"longitude\": \(placeMark.coordinate.longitude)}".dataUsingEncoding(NSUTF8StringEncoding)
 
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) {
@@ -80,8 +85,9 @@ class ParseClient {
                 return
             }
 
+            completionHandler(success: true, errorMessage: nil)
         }
-        
+
         task.resume()
     }
 }

@@ -15,9 +15,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(animated: Bool) {
         mapView.delegate = self
+        super.viewWillAppear(animated)
         refresh()
     }
 
@@ -76,7 +76,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.addAnnotations(annotations)
 
     }
-    
+
     private func refresh() {
         ParseClient.sharedInstance.getStudentLocations() {
             (success, error) in
@@ -85,7 +85,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     self.showAlertMessage("Location-Data Error", message: error!)
                     return
                 }
-                
+
                 self.removeAnnotations()
                 self.displayStudentPins()
             })
